@@ -302,8 +302,8 @@ export default function App() {
           </button>
         </div>
 
-        <a href="#" className="absolute left-1/2 -translate-x-1/2 text-2xl font-bold tracking-wider text-foreground pointer-events-auto font-display italic">
-          ITSC
+        <a href="#" className="absolute left-1/2 -translate-x-1/2 pointer-events-auto">
+          <img src="/ITSC trắng.png" alt="ITSC" className="h-[60px] md:h-[75px] object-contain" />
         </a>
 
         <div className="hidden md:flex items-center gap-4 pointer-events-auto">
@@ -342,7 +342,9 @@ export default function App() {
                 <X className="w-5 h-5" />
                 <span className="text-[10px] font-bold tracking-[0.25em] uppercase">Close</span>
               </button>
-              <span className="absolute left-1/2 -translate-x-1/2 text-2xl font-bold tracking-wider font-display italic">ITSC</span>
+              <span className="absolute left-1/2 -translate-x-1/2">
+                <img src="/ITSC trắng.png" alt="ITSC" className="h-[60px] object-contain" />
+              </span>
             </div>
 
             <div className="flex-1 flex flex-col justify-center px-6 md:px-20">
