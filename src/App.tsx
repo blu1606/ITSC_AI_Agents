@@ -21,6 +21,7 @@ import {
   Calendar,
   ChevronDown,
   AlertCircle,
+  Trophy,
   Mail,
   Facebook,
   MessageSquare,
@@ -817,68 +818,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Prizes Section */}
-        <section id="prizes" className="py-32">
-          <div className="max-w-7xl mx-auto px-6">
-            <SectionHeading title="CƠ CẤU GIẢI THƯỞNG (VÒNG IDEA)" subtitle="Phần thưởng xứng đáng cho những ý tưởng AI Agent xuất sắc nhất." />
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {PRIZES.map((prize, i) => (
-                <motion.div
-                  key={prize.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="liquid-glass glass-hover p-8 rounded-[32px] flex flex-col items-center text-center group"
-                >
-                  <div className={`w-12 h-12 rounded-full bg-${prize.color}/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform icon-gradient`}>
-                    <Target className={`w-6 h-6 text-${prize.color}`} />
-                  </div>
-                  <h3 className="text-foreground/50 text-xs font-bold uppercase tracking-widest mb-2">{prize.title}</h3>
-                  <div className={`text-3xl font-display italic mb-4 text-${prize.color}`}>{prize.value}</div>
-                  <p className="text-sm text-foreground/40">{prize.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="mb-12 p-6 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-4 max-w-3xl mx-auto">
-              <AlertCircle className="w-5 h-5 text-accent-blue shrink-0 mt-0.5" />
-              <p className="text-xs text-foreground/60 leading-relaxed">
-                <span className="text-foreground font-bold uppercase tracking-widest block mb-1">Ghi chú Vòng Idea:</span>
-                Giải thưởng tiền mặt sẽ được trao trực tiếp cho các đội có ý tưởng xuất sắc nhất sau buổi Pitching. Đây là nguồn kinh phí hỗ trợ ban đầu để các đội tiếp tục phát triển sản phẩm ở các giai đoạn tiếp theo.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="glass glass-hover p-8 rounded-3xl border border-white/5 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-accent-blue/20 rounded-full flex items-center justify-center">
-                    <CheckCircle2 className="w-5 h-5 text-accent-blue" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold">Vòng Idea</h4>
-                    <p className="text-xs text-foreground/40 uppercase tracking-widest">Current Stage</p>
-                  </div>
-                </div>
-                <span className="px-4 py-1 bg-accent-blue/20 text-accent-blue text-[10px] font-bold uppercase tracking-widest rounded-full">Active</span>
-              </div>
-              <div className="glass p-8 rounded-3xl border border-white/5 flex items-center justify-between opacity-60">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
-                    <Calendar className="w-5 h-5 text-foreground/40" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold">Vòng Code</h4>
-                    <p className="text-xs text-foreground/40 uppercase tracking-widest">Next Stage</p>
-                  </div>
-                </div>
-                <span className="px-4 py-1 bg-white/10 text-foreground/40 text-[10px] font-bold uppercase tracking-widest rounded-full">Coming Soon</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Deliverables Section */}
         <section id="deliverables" className="py-32">
           <div className="max-w-7xl mx-auto px-6">
@@ -1015,9 +954,8 @@ export default function App() {
             {/* Content Container (Left Side) */}
             <div className="relative z-10 w-full lg:w-[55%] p-12 lg:p-20 flex flex-col justify-center">
               <div className="max-w-2xl">
-                <h2 className="text-5xl lg:text-7xl font-medium tracking-tight-custom leading-tight mb-8 text-[#1a1a1a]">
-                  Giải đáp <br />
-                  <span className="text-[#f97316] italic font-display">thắc mắc</span>
+                <h2 className="text-5xl lg:text-7xl font-medium tracking-tight-custom leading-tight mb-8 text-[#1a1a1a] whitespace-nowrap">
+                  Giải đáp<span className="text-[#f97316] italic font-display ml-2 tracking-tighter">thắc mắc</span>
                 </h2>
                 <p className="text-lg lg:text-xl text-[#4b5563] mb-12 leading-relaxed max-w-xl">
                   Mọi thông tin bạn cần biết về lộ trình, quy định và cách thức tham gia AI Agentic Spark 2026.
@@ -1118,6 +1056,137 @@ export default function App() {
                   <div>
                     <p className="font-bold text-sm mb-1">Câu hỏi</p>
                     <p className="text-sm text-foreground/60">Liên hệ BTC qua Discord hoặc Fanpage.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Prize Section (Vòng Idea) */}
+        <section id="prizes" className="py-16 px-6 bg-black">
+          <div className="relative max-w-[1400px] mx-auto min-h-[600px] rounded-[4rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
+            {/* Background Video */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-[120%] h-[135%] absolute top-0 left-1/2 -translate-x-1/2 object-cover object-top opacity-60"
+              >
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260215_121759_424f8e9c-d8bd-4974-9567-52709dfb6842.mp4" type="video/mp4" />
+              </video>
+            </div>
+
+            {/* Blurred Background Element */}
+            <div
+              className="absolute top-[150px] left-1/2 -translate-x-1/2 w-[801px] h-[384px] bg-black rounded-full blur-[77.5px] z-1 opacity-40"
+            />
+
+            {/* Bottom Blur Overlay */}
+            <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black via-black/20 to-transparent z-10 pointer-events-none backdrop-blur-[12px]" />
+
+            {/* Content Container */}
+            <div className="relative z-20 w-full h-full pt-32 pb-16 px-6 flex flex-col items-center text-center">
+              {/* Heading Block */}
+              <div className="flex flex-col gap-[10px] mb-12 max-w-[871px]">
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-[clamp(2.5rem,5vw,76px)] font-sans font-medium text-white tracking-[-2px] leading-[1.15] uppercase"
+                >
+                  CƠ CẤU GIẢI THƯỞNG
+                </motion.h2>
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="text-[clamp(2.5rem,5vw,76px)] font-display italic text-white tracking-[-2px] leading-[1.15]"
+                >
+                  (VÒNG IDEA)
+                </motion.h2>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="text-[#f6f7f9]/90 text-lg max-w-[613px] mx-auto leading-[26px] mt-4"
+                >
+                  Phần thưởng xứng đáng cho những ý tưởng AI Agent đột phá và có tính thực tiễn cao nhất tại ITSC 2026.
+                </motion.p>
+              </div>
+
+              {/* Podium Display */}
+              <div className="relative w-full max-w-[1163px] mx-auto -mt-6">
+                <div className="liquid-glass backdrop-blur-[16px] bg-black/5 border border-white/10 rounded-[24px] p-[22.5px] shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+                  <div className="flex flex-col md:flex-row items-end justify-center gap-4 md:gap-0 pt-12 pb-8">
+
+                    {/* 2nd Place */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 }}
+                      className="flex flex-col items-center w-full md:w-1/3 order-2 md:order-1 group cursor-default"
+                    >
+                      <div className="mb-6 flex flex-col items-center transition-all duration-300">
+                        <div className="w-16 h-16 rounded-full bg-accent-purple/40 flex items-center justify-center mb-4 border border-accent-purple/60 shadow-[0_0_30px_rgba(168,85,247,0.3)] group-hover:shadow-[0_0_50px_rgba(168,85,247,0.6)] group-hover:bg-accent-purple/60 transition-all">
+                          <Trophy className="w-8 h-8 text-accent-purple" />
+                        </div>
+                        <div className="text-2xl font-display italic text-accent-purple group-hover:font-bold transition-all">Giải Nhì</div>
+                        <div className="text-4xl font-bold text-white mt-2">300.000 VNĐ</div>
+                        <div className="text-sm text-white/40 mt-2 text-center max-w-[200px]">Kèm giấy chứng nhận & quà tặng.</div>
+                      </div>
+                      <div className="w-full h-32 md:h-48 bg-gradient-to-t from-accent-purple/20 to-accent-purple/40 rounded-t-2xl border-x border-t border-accent-purple/30 flex items-center justify-center transition-all duration-300 group-hover:from-accent-purple/40 group-hover:to-accent-purple/60">
+                        <span className="text-6xl font-display text-accent-purple/30 group-hover:text-accent-purple/70 transition-colors">2</span>
+                      </div>
+                    </motion.div>
+
+                    {/* 1st Place */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 60 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 }}
+                      className="flex flex-col items-center w-full md:w-1/3 z-10 order-1 md:order-2 group cursor-default"
+                    >
+                      <div className="mb-8 flex flex-col items-center transition-all duration-300">
+                        <div className="w-24 h-24 rounded-full bg-accent-blue/40 flex items-center justify-center mb-4 border border-accent-blue/60 shadow-[0_0_60px_rgba(59,130,246,0.4)] group-hover:shadow-[0_0_80px_rgba(59,130,246,0.7)] group-hover:bg-accent-blue/60 transition-all">
+                          <Trophy className="w-12 h-12 text-accent-blue" />
+                        </div>
+                        <div className="text-3xl font-display italic text-accent-blue group-hover:font-bold transition-all">Giải Nhất</div>
+                        <div className="text-5xl font-bold text-white mt-2">500.000 VNĐ</div>
+                        <div className="text-sm text-white/60 mt-2 text-center max-w-[240px]">Kèm giấy chứng nhận & quà tặng từ nhà tài trợ.</div>
+                      </div>
+                      <div className="w-full h-48 md:h-72 bg-gradient-to-t from-accent-blue/30 to-accent-blue/50 rounded-t-2xl border-x border-t border-accent-blue/40 flex items-center justify-center shadow-[0_-20px_60px_rgba(59,130,246,0.3)] transition-all duration-300 group-hover:from-accent-blue/40 group-hover:to-accent-blue/70">
+                        <span className="text-8xl font-display text-accent-blue/40 group-hover:text-accent-blue/80 transition-colors">1</span>
+                      </div>
+                    </motion.div>
+
+                    {/* 3rd Place */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.5 }}
+                      className="flex flex-col items-center w-full md:w-1/3 order-3 group cursor-default"
+                    >
+                      <div className="mb-6 flex flex-col items-center transition-all duration-300">
+                        <div className="w-16 h-16 rounded-full bg-accent-cyan/40 flex items-center justify-center mb-4 border border-accent-cyan/60 shadow-[0_0_30px_rgba(6,182,212,0.3)] group-hover:shadow-[0_0_50px_rgba(6,182,212,0.5)] group-hover:bg-accent-cyan/60 transition-all">
+                          <Trophy className="w-8 h-8 text-accent-cyan" />
+                        </div>
+                        <div className="text-2xl font-display italic text-accent-cyan group-hover:font-bold transition-all">Giải Ba</div>
+                        <div className="text-4xl font-bold text-white mt-2">200.000 VNĐ</div>
+                        <div className="text-sm text-white/40 mt-2 text-center max-w-[200px]">Kèm giấy chứng nhận.</div>
+                      </div>
+                      <div className="w-full h-24 md:h-32 bg-gradient-to-t from-accent-cyan/20 to-accent-cyan/40 rounded-t-2xl border-x border-t border-accent-cyan/30 flex items-center justify-center transition-all duration-300 group-hover:from-accent-cyan/30 group-hover:to-accent-cyan/50">
+                        <span className="text-5xl font-display text-accent-cyan/30 group-hover:text-accent-cyan/60 transition-colors">3</span>
+                      </div>
+                    </motion.div>
+
                   </div>
                 </div>
               </div>
