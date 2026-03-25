@@ -112,33 +112,32 @@ const THEME_FEATURES = [
 
 const TIMELINE = [
   {
-    phase: "Phase 1",
+    phase: "Giai đoạn 1",
     title: "Ghép đội & Lên ý tưởng",
-    date: "Tối 26/03",
+    date: "27/03",
     items: [
-      "Mở form đăng ký đội thi (1-4 thành viên).",
-      "20:00 26/03: Info Session & Team Matching trên Discord.",
-      "Giải thích AI Agent, thể lệ, tiêu chí chấm, gợi ý ý tưởng, kết nối thành viên."
+      "27/03: Mở form đăng ký tham gia.",
+      "Tham khảo thêm tại: Fanpage/Discord của ITSC."
     ],
     icon: <Users className="w-5 h-5" />
   },
   {
-    phase: "Phase 2",
+    phase: "Giai đoạn 2",
     title: "Phát triển ý tưởng",
     date: "29/03 - 13/04",
     items: [
-      "18:00 29/03: Hạn chót chốt danh sách đội.",
-      "30/03 – 13/04: Các đội xây dựng tài liệu dự thi."
+      "18:00 ngày 29/03: Hạn chót chốt danh sách đội tham gia.",
+      "30/03 – 13/04: Các đội xây dựng Pitch Deck hoặc Document mô tả giải pháp, thiết kế User Flow và AI Agent Architecture."
     ],
     icon: <FileText className="w-5 h-5" />
   },
   {
-    phase: "Phase 3",
+    phase: "Giai đoạn 3",
     title: "Pitch Vòng Idea",
-    date: "19:00 13/04",
+    date: "13/04",
     items: [
-      "Thuyết trình online – 20 phút/đội.",
-      "BTC chấm và trao giải tiền mặt cho ý tưởng xuất sắc."
+      "19:00 ngày 13/04: Vòng thuyết trình online (10 phút/đội).",
+      "BTC chấm điểm, chọn ra những ý tưởng xuất sắc nhất và trao giải thưởng tiền mặt vô cùng hấp dẫn."
     ],
     icon: <Calendar className="w-5 h-5" />
   }
