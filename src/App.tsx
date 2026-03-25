@@ -290,7 +290,7 @@ const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="text-[clamp(2.5rem,5vw,4rem)] font-display uppercase leading-tight mb-6 tracking-tight-custom text-gradient"
+      className="text-[clamp(2.5rem,5vw,4rem)] font-display font-black uppercase leading-tight mb-6 tracking-tight-custom text-gradient text-glow-primary"
     >
       {title}
     </motion.h2>
@@ -344,7 +344,7 @@ export default function App() {
         </div>
 
         <a href="#" className="absolute left-1/2 -translate-x-1/2 pointer-events-auto">
-          <img src="/ITSC trắng.png" alt="ITSC" className="h-[60px] md:h-[75px] object-contain" />
+          <img src="/ITSC_wite.png" alt="ITSC" className="h-[60px] md:h-[75px] object-contain" />
         </a>
         {/* commit */}
 
@@ -385,7 +385,7 @@ export default function App() {
                 <span className="text-[10px] font-bold tracking-[0.25em] uppercase">Close</span>
               </button>
               <span className="absolute left-1/2 -translate-x-1/2">
-                <img src="/ITSC trắng.png" alt="ITSC" className="h-[60px] object-contain" />
+                <img src="/ITSC_wite.png" alt="ITSC" className="h-[60px] object-contain" />
               </span>
             </div>
 
@@ -460,11 +460,11 @@ export default function App() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="text-[clamp(2.5rem,8vw,6.5rem)] leading-[0.85] tracking-tighter-custom uppercase"
+              className="text-[clamp(2.5rem,8vw,6.5rem)] leading-[0.85] tracking-tighter-custom uppercase font-black"
             >
-              <span className="block font-normal">Igniting the</span>
-              <span className="block font-normal">spark of AI</span>
-              <span className="block font-display italic lowercase text-gradient">innovation</span>
+              <span className="block">Igniting the</span>
+              <span className="block">spark of AI</span>
+              <span className="block font-display italic lowercase text-gradient text-glow-blue">innovation</span>
             </motion.h1>
 
             <motion.div
@@ -595,7 +595,7 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-[clamp(2.5rem,8vw,4rem)] font-medium leading-[1.28] mb-6 mx-auto max-w-[800px] bg-clip-text text-transparent bg-[linear-gradient(144.5deg,#FFFFFF_28%,rgba(0,0,0,0)_115%)] tracking-tight-custom"
+              className="text-[clamp(2.5rem,8vw,4rem)] font-black leading-[1.28] mb-6 mx-auto max-w-[800px] bg-clip-text text-transparent bg-[linear-gradient(144.5deg,#FFFFFF_28%,rgba(0,0,0,0)_115%)] tracking-tight-custom"
             >
               AI Agent: Agents of Change
             </motion.h2>
@@ -705,9 +705,9 @@ export default function App() {
             <div className="relative z-10 flex flex-col lg:flex-row min-h-[850px]">
               {/* Left Panel - Vertical Timeline Accordion */}
               <div className="w-full lg:w-[55%] p-8 lg:p-16 flex flex-col justify-center">
-                <h2 className="text-5xl lg:text-6xl tracking-[-0.05em] text-white font-medium mb-12">
+                <h2 className="text-5xl lg:text-6xl tracking-[-0.05em] text-white font-black mb-12">
                   Lộ trình <br />
-                  <span className="font-display italic text-white/80">thi đấu AI Agent</span>
+                  <span className="font-display italic text-white/80 text-glow-blue">thi đấu AI Agent</span>
                 </h2>
 
                 <div className="space-y-4 w-full max-w-xl">
@@ -913,7 +913,7 @@ export default function App() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-[clamp(2.5rem,5vw,5rem)] font-display uppercase leading-tight mb-6 tracking-tighter-custom text-primary-gradient"
+                className="text-[clamp(2.5rem,5vw,5rem)] font-display font-black uppercase leading-tight mb-6 tracking-tighter-custom text-primary-gradient text-glow-primary"
               >
                 Tiêu chuẩn Đánh giá
               </motion.h2>
@@ -954,8 +954,8 @@ export default function App() {
             {/* Content Container (Left Side) */}
             <div className="relative z-10 w-full lg:w-[55%] p-12 lg:p-20 flex flex-col justify-center">
               <div className="max-w-2xl">
-                <h2 className="text-5xl lg:text-7xl font-medium tracking-tight-custom leading-tight mb-8 text-[#1a1a1a] whitespace-nowrap">
-                  Giải đáp<span className="text-[#f97316] italic font-display ml-2 tracking-tighter">thắc mắc</span>
+                <h2 className="text-5xl lg:text-7xl font-black tracking-tight-custom leading-tight mb-8 text-[#1a1a1a] whitespace-nowrap">
+                  Giải đáp<span className="text-[#f97316] italic font-display ml-2 tracking-tighter text-glow-orange">thắc mắc</span>
                 </h2>
                 <p className="text-lg lg:text-xl text-[#4b5563] mb-12 leading-relaxed max-w-xl">
                   Mọi thông tin bạn cần biết về lộ trình, quy định và cách thức tham gia AI Agentic Spark 2026.
@@ -1065,7 +1065,7 @@ export default function App() {
 
         {/* Prize Section (Vòng Idea) */}
         <section id="prizes" className="py-16 px-6 bg-black">
-          <div className="relative max-w-[1400px] mx-auto min-h-[600px] rounded-[4rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
+          <div className="relative max-w-[1400px] mx-auto min-h-[500px] rounded-[4rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
             {/* Background Video */}
             <div className="absolute inset-0 z-0 overflow-hidden">
               <video
@@ -1088,14 +1088,14 @@ export default function App() {
             <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black via-black/20 to-transparent z-10 pointer-events-none backdrop-blur-[12px]" />
 
             {/* Content Container */}
-            <div className="relative z-20 w-full h-full pt-32 pb-16 px-6 flex flex-col items-center text-center">
+            <div className="relative z-20 w-full h-full pt-48 pb-8 px-6 flex flex-col items-center text-center scale-[0.75] origin-top">
               {/* Heading Block */}
               <div className="flex flex-col gap-[10px] mb-12 max-w-[871px]">
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="text-[clamp(2.5rem,5vw,76px)] font-sans font-medium text-white tracking-[-2px] leading-[1.15] uppercase"
+                  className="text-[clamp(2.5rem,5vw,76px)] font-sans font-black tracking-[-2px] leading-[1.15] uppercase bg-clip-text text-transparent bg-gradient-to-r from-primary-gradient-from via-primary-gradient-via to-primary-gradient-to text-glow-primary"
                 >
                   CƠ CẤU GIẢI THƯỞNG
                 </motion.h2>
@@ -1104,7 +1104,7 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 }}
-                  className="text-[clamp(2.5rem,5vw,76px)] font-display italic text-white tracking-[-2px] leading-[1.15]"
+                  className="text-[clamp(2.5rem,5vw,76px)] font-display italic font-black tracking-[-2px] leading-[1.15] bg-clip-text text-transparent bg-gradient-to-r from-primary-gradient-from via-primary-gradient-via to-primary-gradient-to text-glow-primary"
                 >
                   (VÒNG IDEA)
                 </motion.h2>
@@ -1221,10 +1221,10 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-5xl sm:text-7xl md:text-8xl leading-[0.95] tracking-[-2.46px] font-display uppercase mb-8"
+              className="text-5xl sm:text-7xl md:text-8xl leading-[0.95] tracking-[-2.46px] font-display font-black uppercase mb-8"
             >
               Sẵn sàng trở thành <br />
-              <span className="text-muted-foreground">“Agents of Change”</span> <br />
+              <span className="text-muted-foreground text-glow-blue">“Agents of Change”</span> <br />
               cùng ITSC?
             </motion.h2>
 
