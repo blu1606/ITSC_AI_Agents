@@ -3,8 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import Hls from 'hls.js';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import {
   ArrowRight,
   X,
@@ -28,8 +31,45 @@ import {
   BookOpen,
   Twitter,
   Linkedin,
-  Instagram
+  Instagram,
+  Zap
 } from 'lucide-react';
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+// --- Components ---
+
+const HlsVideo = ({ src, fallback }: { src: string; fallback: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(src);
+      hls.attachMedia(video);
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = src;
+    } else {
+      video.src = fallback;
+    }
+  }, [src, fallback]);
+
+  return (
+    <video
+      ref={videoRef}
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="w-full h-auto mix-blend-screen"
+    />
+  );
+};
 
 // --- Data ---
 
@@ -249,7 +289,7 @@ const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="text-[clamp(2.5rem,5vw,4rem)] font-display italic leading-tight mb-6"
+      className="text-[clamp(2.5rem,5vw,4rem)] font-display uppercase leading-tight mb-6 tracking-tight-custom text-gradient"
     >
       {title}
     </motion.h2>
@@ -259,7 +299,7 @@ const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.1 }}
-        className="text-foreground/60 max-w-2xl text-lg leading-relaxed"
+        className="text-foreground/60 max-w-2xl text-lg leading-relaxed tracking-wide-custom"
       >
         {subtitle}
       </motion.p>
@@ -364,7 +404,7 @@ export default function App() {
                     }}
                     className="group flex items-center justify-between py-4 md:py-6 border-b border-background/10 transition-all"
                   >
-                    <span className="text-[clamp(2rem,5vw,4.5rem)] font-light -tracking-[0.06em] uppercase group-hover:translate-x-1 transition-transform">
+                    <span className="text-[clamp(2rem,5vw,4.5rem)] font-normal tracking-tighter-custom uppercase group-hover:translate-x-1 transition-transform">
                       {link.name}
                     </span>
                     <ArrowRight className="w-8 h-8 md:w-12 md:h-12 opacity-0 group-hover:opacity-100 group-hover:translate-x-[2px] transition-all" />
@@ -419,11 +459,11 @@ export default function App() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="text-[clamp(2.5rem,8vw,6.5rem)] leading-[0.85] -tracking-[0.06em] uppercase"
+              className="text-[clamp(2.5rem,8vw,6.5rem)] leading-[0.85] tracking-tighter-custom uppercase"
             >
-              <span className="block font-light">Igniting the</span>
-              <span className="block font-light">spark of AI</span>
-              <span className="block font-display italic lowercase">innovation</span>
+              <span className="block font-normal">Igniting the</span>
+              <span className="block font-normal">spark of AI</span>
+              <span className="block font-display italic lowercase text-gradient">innovation</span>
             </motion.h1>
 
             <motion.div
@@ -464,7 +504,7 @@ export default function App() {
                   <span className="text-sm font-bold uppercase">Registration Open</span>
                 </div>
               </div>
-              <p className="text-foreground/70 text-sm leading-relaxed max-w-sm">
+              <p className="text-foreground/70 text-sm leading-relaxed max-w-sm tracking-wide-custom">
                 Rèn tư duy sản phẩm, thực chiến AI Agent, làm bàn đạp cho những cuộc thi lớn hơn.
                 Sẵn sàng trở thành "Agents of Change" cùng ITSC?
               </p>
@@ -492,7 +532,7 @@ export default function App() {
         <section id="about" className="py-32 border-t border-white/5">
           <div className="max-w-7xl mx-auto px-6">
             <SectionHeading
-              title="Giới thiệu cuộc thi"
+              title="GIỚI THIỆU CUỘC THI"
               subtitle="ITSC: AGENTIC SPARK là sân chơi hackathon nội bộ do Ban Tech ITSC tổ chức, nơi các thành viên cùng nhau khám phá và chinh phục kỷ nguyên AI Agent."
             />
 
@@ -504,9 +544,9 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="glass glass-hover p-8 rounded-3xl"
+                  className="liquid-glass glass-hover p-8 rounded-3xl"
                 >
-                  <div className="mb-6">{card.icon}</div>
+                  <div className="mb-6 icon-gradient">{card.icon}</div>
                   <h3 className="text-xl font-bold mb-3">{card.title}</h3>
                   <p className="text-foreground/60 text-sm leading-relaxed">{card.desc}</p>
                 </motion.div>
@@ -554,7 +594,7 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-[clamp(2.5rem,8vw,4rem)] font-medium leading-[1.28] mb-6 mx-auto max-w-[800px] bg-clip-text text-transparent bg-[linear-gradient(144.5deg,#FFFFFF_28%,rgba(0,0,0,0)_115%)]"
+              className="text-[clamp(2.5rem,8vw,4rem)] font-medium leading-[1.28] mb-6 mx-auto max-w-[800px] bg-clip-text text-transparent bg-[linear-gradient(144.5deg,#FFFFFF_28%,rgba(0,0,0,0)_115%)] tracking-tight-custom"
             >
               AI Agent: Agents of Change
             </motion.h2>
@@ -613,9 +653,9 @@ export default function App() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm"
+                    className="p-6 rounded-2xl bg-white/5 backdrop-blur-sm glass-hover"
                   >
-                    <div className="mb-4">{feature.icon}</div>
+                    <div className="mb-4 icon-gradient">{feature.icon}</div>
                     <h4 className="font-bold mb-2 text-white">{feature.title}</h4>
                     <p className="text-xs text-white/50">{feature.desc}</p>
                   </motion.div>
@@ -666,14 +706,14 @@ export default function App() {
               <div className="w-full lg:w-[55%] p-8 lg:p-16 flex flex-col justify-center">
                 <h2 className="text-5xl lg:text-6xl tracking-[-0.05em] text-white font-medium mb-12">
                   Lộ trình <br />
-                  <span className="font-serif italic text-white/80">thi đấu AI Agent</span>
+                  <span className="font-display italic text-white/80">thi đấu AI Agent</span>
                 </h2>
 
                 <div className="space-y-4 w-full max-w-xl">
                   {TIMELINE.map((phase, index) => (
                     <div
                       key={index}
-                      className={`liquid-glass rounded-[2rem] overflow-hidden transition-all duration-500 ${activePhase === index ? 'ring-1 ring-white/30 bg-white/10' : 'hover:bg-white/5'
+                      className={`liquid-glass glass-hover rounded-[2rem] overflow-hidden transition-all duration-500 ${activePhase === index ? 'ring-1 ring-white/30 bg-white/10' : ''
                         }`}
                     >
                       <button
@@ -683,7 +723,9 @@ export default function App() {
                         <div className="flex items-center gap-6">
                           <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-colors ${activePhase === index ? 'bg-white text-black' : 'bg-white/10 text-white group-hover:bg-white/20'
                             }`}>
-                            {React.cloneElement(phase.icon as React.ReactElement, { className: "w-6 h-6" })}
+                            <div className={activePhase === index ? "" : "icon-gradient"}>
+                              {React.cloneElement(phase.icon as React.ReactElement, { className: "w-6 h-6" })}
+                            </div>
                           </div>
                           <div>
                             <div className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40 mb-1">
@@ -727,7 +769,7 @@ export default function App() {
               {/* Right Panel - Participation Details */}
               <div className="w-full lg:w-[45%] p-8 lg:p-16 flex flex-col justify-end">
                 {/* Info Card */}
-                <div className="liquid-glass p-10 rounded-[2.5rem] mb-8 hover:scale-[1.02] transition-transform">
+                <div className="liquid-glass glass-hover p-10 rounded-[2.5rem] mb-8">
                   <h3 className="text-sm font-bold mb-4 uppercase tracking-widest text-white">Điều kiện tham gia</h3>
                   <p className="text-sm text-white/60 leading-relaxed">
                     Tham gia hệ sinh thái AI Agent lớn nhất năm của ITSC. Kết nối và tỏa sáng cùng những bộ óc sáng tạo nhất trong cộng đồng công nghệ.
@@ -735,24 +777,24 @@ export default function App() {
                 </div>
 
                 {/* Participation Grid */}
-                <div className="liquid-glass p-6 rounded-[3rem]">
+                <div className="liquid-glass glass-hover p-6 rounded-[3rem]">
                   <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="liquid-glass p-6 rounded-[2rem] hover:bg-white/5 transition-colors">
-                      <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-4">
+                    <div className="liquid-glass glass-hover p-6 rounded-[2rem]">
+                      <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-4 icon-gradient">
                         <Users className="w-5 h-5 text-white" />
                       </div>
                       <h4 className="text-xs font-bold uppercase tracking-widest mb-1 text-white">Quy mô đội</h4>
                       <p className="text-[10px] text-white/50">1 – 4 thành viên</p>
                     </div>
-                    <div className="liquid-glass p-6 rounded-[2rem] hover:bg-white/5 transition-colors">
-                      <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-4">
+                    <div className="liquid-glass glass-hover p-6 rounded-[2rem]">
+                      <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-4 icon-gradient">
                         <BookOpen className="w-5 h-5 text-white" />
                       </div>
                       <h4 className="text-xs font-bold uppercase tracking-widest mb-1 text-white">Bài nộp</h4>
                       <p className="text-[10px] text-white/50">Tài liệu dự thi chuẩn</p>
                     </div>
                   </div>
-                  <div className="liquid-glass p-6 rounded-[2rem] flex items-center gap-6 hover:bg-white/5 transition-colors">
+                  <div className="liquid-glass glass-hover p-6 rounded-[2rem] flex items-center gap-6">
                     <div className="w-20 h-14 rounded-xl overflow-hidden bg-white/5 shrink-0">
                       <img src="https://picsum.photos/seed/ai-agent/200/150" alt="AI" className="w-full h-full object-cover opacity-60" />
                     </div>
@@ -778,7 +820,7 @@ export default function App() {
         {/* Prizes Section */}
         <section id="prizes" className="py-32">
           <div className="max-w-7xl mx-auto px-6">
-            <SectionHeading title="Cơ cấu giải thưởng (vòng idea)" subtitle="Phần thưởng xứng đáng cho những ý tưởng AI Agent xuất sắc nhất." />
+            <SectionHeading title="CƠ CẤU GIẢI THƯỞNG (VÒNG IDEA)" subtitle="Phần thưởng xứng đáng cho những ý tưởng AI Agent xuất sắc nhất." />
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {PRIZES.map((prize, i) => (
@@ -788,9 +830,9 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="glass p-8 rounded-[32px] flex flex-col items-center text-center group"
+                  className="liquid-glass glass-hover p-8 rounded-[32px] flex flex-col items-center text-center group"
                 >
-                  <div className={`w-12 h-12 rounded-full bg-${prize.color}/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                  <div className={`w-12 h-12 rounded-full bg-${prize.color}/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform icon-gradient`}>
                     <Target className={`w-6 h-6 text-${prize.color}`} />
                   </div>
                   <h3 className="text-foreground/50 text-xs font-bold uppercase tracking-widest mb-2">{prize.title}</h3>
@@ -809,7 +851,7 @@ export default function App() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="glass p-8 rounded-3xl border border-white/5 flex items-center justify-between">
+              <div className="glass glass-hover p-8 rounded-3xl border border-white/5 flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-accent-blue/20 rounded-full flex items-center justify-center">
                     <CheckCircle2 className="w-5 h-5 text-accent-blue" />
@@ -841,28 +883,28 @@ export default function App() {
         <section id="deliverables" className="py-32">
           <div className="max-w-7xl mx-auto px-6">
             <SectionHeading
-              title="Tài liệu cần chuẩn bị"
+              title="TÀI LIỆU CẦN CHUẨN BỊ"
               subtitle="Mỗi đội cần nộp bộ tài liệu đầy đủ để BTC đánh giá tiềm năng của ý tưởng."
             />
 
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <div className="glass p-10 rounded-[40px] border-l-4 border-accent-blue">
+              <div className="liquid-glass glass-hover p-10 rounded-[40px]">
                 <h3 className="text-2xl font-bold mb-4">Pitch Deck (bắt buộc)</h3>
-                <p className="text-foreground/60 mb-6">Slides trình bày ý tưởng theo cấu trúc quy định của BTC.</p>
+                <p className="text-foreground/60 mb-6 tracking-wide-custom">Slides trình bày ý tưởng theo cấu trúc quy định của BTC.</p>
                 <div className="text-xs font-bold tracking-widest uppercase text-accent-blue">
                   10 - 15 Slides
                 </div>
               </div>
-              <div className="glass p-10 rounded-[40px] border-l-4 border-accent-purple">
+              <div className="liquid-glass glass-hover p-10 rounded-[40px]">
                 <h3 className="text-2xl font-bold mb-4">Document mô tả (khuyến khích)</h3>
-                <p className="text-foreground/60 mb-6">Chi tiết kỹ thuật, user flow, kiến trúc hệ thống và các tài liệu bổ trợ khác.</p>
+                <p className="text-foreground/60 mb-6 tracking-wide-custom">Chi tiết kỹ thuật, user flow, kiến trúc hệ thống và các tài liệu bổ trợ khác.</p>
                 <div className="text-xs font-bold tracking-widest uppercase text-accent-purple">
                   Technical Detail
                 </div>
               </div>
             </div>
 
-            <div className="text-center p-6 glass rounded-2xl inline-block mx-auto">
+            <div className="text-center p-6 liquid-glass rounded-2xl inline-block mx-auto">
               <span className="text-sm font-medium">Thời gian thuyết trình: <span className="text-accent-cyan font-bold">20 phút/đội</span></span>
             </div>
           </div>
@@ -872,13 +914,13 @@ export default function App() {
         <section className="py-32 bg-white/[0.02]">
           <div className="max-w-4xl mx-auto px-6">
             <SectionHeading
-              title="Cấu trúc Pitch Deck"
+              title="CẤU TRÚC PITCH DECK"
               subtitle="Thời gian thuyết trình: 20 phút/đội. Slides nên gọn, súc tích, trực quan (Khuyến nghị: 10 – 15 slides)."
             />
 
             <div className="space-y-4">
               {PITCH_DECK_STRUCTURE.map((item, i) => (
-                <div key={i} className="glass rounded-2xl overflow-hidden">
+                <div key={i} className="liquid-glass glass-hover rounded-2xl overflow-hidden">
                   <button
                     onClick={() => setActiveAccordion(activeAccordion === i ? null : i)}
                     className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
@@ -915,9 +957,37 @@ export default function App() {
         </section>
 
         {/* Scoring Section */}
-        <section id="scoring" className="py-32">
-          <div className="max-w-7xl mx-auto px-6">
-            <SectionHeading title="Rubric chấm điểm vòng ý tưởng" subtitle="Tổng điểm: 100. BTC đánh giá dựa trên 5 tiêu chí cốt lõi." />
+        <section id="scoring" className="relative py-32 overflow-hidden bg-[#010101]">
+          {/* Video Background */}
+          <div className="absolute bottom-0 left-0 w-full z-10 -mt-[150px] pointer-events-none opacity-50">
+            <HlsVideo 
+              src="https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8" 
+              fallback="/_videos/v1/f0c78f536d5f21a047fb7792723a36f9d647daa1"
+            />
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#010101] via-transparent to-[#010101]" />
+          </div>
+
+          <div className="relative z-20 max-w-7xl mx-auto px-6">
+            <div className="text-center mb-20">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-[clamp(2.5rem,5vw,5rem)] font-display uppercase leading-tight mb-6 tracking-tighter-custom text-primary-gradient"
+              >
+                Tiêu chuẩn Đánh giá
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-white/80 max-w-2xl mx-auto text-lg leading-relaxed tracking-wide-custom"
+              >
+                Tổng điểm: 100. BTC đánh giá dựa trên 5 tiêu chí cốt lõi để tìm ra những ý tưởng đột phá nhất.
+              </motion.p>
+            </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
               {SCORING_RUBRIC.map((item, i) => (
@@ -927,9 +997,9 @@ export default function App() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="glass p-8 rounded-3xl flex flex-col"
+                  className="liquid-glass glass-hover p-8 rounded-3xl flex flex-col border border-white/5"
                 >
-                  <div className="text-4xl font-display italic text-accent-blue mb-4">{item.score}</div>
+                  <div className="text-4xl font-display italic mb-4 text-primary-gradient">{item.score}</div>
                   <h4 className="font-bold mb-3 leading-tight">{item.title}</h4>
                   <p className="text-xs text-foreground/50 mt-auto">{item.desc}</p>
                 </motion.div>
@@ -945,9 +1015,9 @@ export default function App() {
             {/* Content Container (Left Side) */}
             <div className="relative z-10 w-full lg:w-[55%] p-12 lg:p-20 flex flex-col justify-center">
               <div className="max-w-2xl">
-                <h2 className="text-5xl lg:text-7xl font-medium tracking-tight leading-[1.05] mb-8 text-[#1a1a1a]">
+                <h2 className="text-5xl lg:text-7xl font-medium tracking-tight-custom leading-tight mb-8 text-[#1a1a1a]">
                   Giải đáp <br />
-                  <span className="text-[#f97316] italic font-serif">thắc mắc</span>
+                  <span className="text-[#f97316] italic font-display">thắc mắc</span>
                 </h2>
                 <p className="text-lg lg:text-xl text-[#4b5563] mb-12 leading-relaxed max-w-xl">
                   Mọi thông tin bạn cần biết về lộ trình, quy định và cách thức tham gia AI Agentic Spark 2026.
@@ -1011,11 +1081,13 @@ export default function App() {
         {/* Notes Section */}
         <section className="py-32">
           <div className="max-w-4xl mx-auto px-6">
-            <div className="p-10 rounded-[40px] bg-gradient-to-br from-accent-blue/20 to-accent-purple/20 border border-white/10 relative overflow-hidden">
+            <div className="p-10 rounded-[40px] liquid-glass glass-hover bg-gradient-to-br from-accent-blue/20 to-accent-purple/20 relative overflow-hidden">
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-accent-blue/20 blur-[60px] rounded-full" />
 
               <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                <AlertCircle className="w-6 h-6 text-accent-blue" />
+                <div className="icon-gradient">
+                  <AlertCircle className="w-6 h-6 text-accent-blue" />
+                </div>
                 Lưu ý quan trọng
               </h3>
 
@@ -1053,50 +1125,86 @@ export default function App() {
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="py-32 border-t border-white/5">
-          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20">
-            <div>
-              <h2 className="text-5xl md:text-7xl font-display italic mb-8">
-                Sẵn sàng trở thành <br />
-                <span className="text-accent-blue">“Agents of Change”</span> <br />
-                cùng ITSC?
-              </h2>
+        {/* Contact Section - Cinematic Version */}
+        <section id="contact" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#002633]">
+          {/* Section Transition Blur Gradient */}
+          <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
+          
+          {/* Video Background */}
+          <div className="absolute inset-0 z-0">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4" type="video/mp4" />
+            </video>
+            {/* Dark Overlay for readability */}
+            <div className="absolute inset-0 bg-black/30" />
+          </div>
 
-              <div className="space-y-6 mb-12">
-                <div className="flex items-center gap-4 text-foreground/60">
-                  <Mail className="w-5 h-5" />
-                  <span>itsc.fptu@gmail.com</span>
-                </div>
-                <div className="flex items-center gap-4 text-foreground/60">
-                  <Facebook className="w-5 h-5" />
-                  <span>facebook.com/itsc.fptu</span>
-                </div>
-                <div className="flex items-center gap-4 text-foreground/60">
-                  <MessageSquare className="w-5 h-5" />
-                  <span>Discord: Link gửi sau khi đăng ký</span>
-                </div>
-              </div>
-            </div>
+          {/* Content Container */}
+          <div className="relative z-20 max-w-7xl mx-auto px-6 py-[90px] flex flex-col items-center text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-5xl sm:text-7xl md:text-8xl leading-[0.95] tracking-[-2.46px] font-display uppercase mb-8"
+            >
+              Sẵn sàng trở thành <br />
+              <span className="text-muted-foreground">“Agents of Change”</span> <br />
+              cùng ITSC?
+            </motion.h2>
 
-            <div className="glass p-10 rounded-[40px] flex flex-col items-center justify-center text-center">
-              <h3 className="text-3xl font-bold mb-6">Sẵn sàng tỏa sáng?</h3>
-              <p className="text-foreground/60 mb-10 max-w-sm">
-                Đừng bỏ lỡ cơ hội tham gia sân chơi AI Agent lớn nhất năm của ITSC. Đăng ký ngay để giữ chỗ!
-              </p>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-muted-foreground text-base sm:text-lg max-w-2xl leading-relaxed mb-12"
+            >
+              Đừng bỏ lỡ cơ hội tham gia sân chơi AI Agent lớn nhất năm của ITSC. 
+              Chúng tôi đang tìm kiếm những bộ óc sáng tạo, những người dám nghĩ dám làm để cùng nhau định hình tương lai.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="flex flex-col items-center gap-8"
+            >
               <a
                 href="https://forms.gle/Nrr3GDFQ32cYoKtV8"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-6 bg-foreground text-background rounded-2xl font-bold hover:opacity-90 transition-opacity text-center uppercase tracking-widest"
+                className="liquid-glass rounded-full px-14 py-5 text-base text-foreground hover:scale-[1.03] transition-transform cursor-pointer font-medium uppercase tracking-widest"
               >
                 Đăng ký tham gia ngay
               </a>
-              <p className="mt-6 text-[10px] text-foreground/40 uppercase tracking-widest font-bold">
-                Hạn chót: 26/03/2026
-              </p>
-            </div>
+
+              <div className="flex flex-wrap justify-center gap-8 mt-4">
+                <div className="flex items-center gap-3 text-foreground/60 hover:text-foreground transition-colors">
+                  <Mail className="w-5 h-5" />
+                  <span className="text-sm">itsc.fptu@gmail.com</span>
+                </div>
+                <div className="flex items-center gap-3 text-foreground/60 hover:text-foreground transition-colors">
+                  <Facebook className="w-5 h-5" />
+                  <span className="text-sm">facebook.com/itsc.fptu</span>
+                </div>
+                <div className="flex items-center gap-3 text-foreground/60 hover:text-foreground transition-colors">
+                  <MessageSquare className="w-5 h-5" />
+                  <span className="text-sm">Discord Community</span>
+                </div>
+              </div>
+            </motion.div>
           </div>
+
+          {/* Bottom Transition Blur Gradient */}
+          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
         </section>
 
       </main>
@@ -1115,6 +1223,17 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* SVG Gradient Definition for Icons */}
+      <svg width="0" height="0" className="absolute pointer-events-none">
+        <defs>
+          <linearGradient id="icon-gradient-def" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#3b82f6" />
+            <stop offset="50%" stopColor="#a855f7" />
+            <stop offset="100%" stopColor="#06b6d4" />
+          </linearGradient>
+        </defs>
+      </svg>
     </div>
   );
 }
