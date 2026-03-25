@@ -775,7 +775,7 @@ export default function App() {
         {/* Prizes Section */}
         <section id="prizes" className="py-32">
           <div className="max-w-7xl mx-auto px-6">
-            <SectionHeading title="Cơ cấu giải thưởng" subtitle="Phần thưởng xứng đáng cho những ý tưởng AI Agent xuất sắc nhất." />
+            <SectionHeading title="Cơ cấu giải thưởng (vòng idea)" subtitle="Phần thưởng xứng đáng cho những ý tưởng AI Agent xuất sắc nhất." />
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {PRIZES.map((prize, i) => (
