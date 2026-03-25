@@ -305,6 +305,7 @@ export default function App() {
         <a href="#" className="absolute left-1/2 -translate-x-1/2 pointer-events-auto">
           <img src="/ITSC trắng.png" alt="ITSC" className="h-[60px] md:h-[75px] object-contain" />
         </a>
+        {/* commit */}
 
         <div className="hidden md:flex items-center gap-4 pointer-events-auto">
           <a href="#about" className="px-6 py-3 rounded-full border border-foreground/30 hover:border-foreground transition-all text-[10px] font-bold uppercase tracking-[0.25em] bg-black/20 backdrop-blur-sm">
