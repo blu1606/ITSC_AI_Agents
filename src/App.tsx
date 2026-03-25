@@ -344,7 +344,7 @@ export default function App() {
         </div>
 
         <a href="#" className="absolute left-1/2 -translate-x-1/2 pointer-events-auto">
-          <img src="/ITSC_wite.png" alt="ITSC" className="h-[60px] md:h-[75px] object-contain" />
+          <img src="/ITSC_white.png" alt="ITSC" className="h-[60px] md:h-[75px] object-contain" />
         </a>
         {/* commit */}
 
@@ -385,7 +385,7 @@ export default function App() {
                 <span className="text-[10px] font-bold tracking-[0.25em] uppercase">Close</span>
               </button>
               <span className="absolute left-1/2 -translate-x-1/2">
-                <img src="/ITSC_wite.png" alt="ITSC" className="h-[60px] object-contain" />
+                <img src="/ITSC_white.png" alt="ITSC" className="h-[60px] object-contain" />
               </span>
             </div>
 
@@ -460,7 +460,7 @@ export default function App() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="text-[clamp(2.5rem,8vw,6.5rem)] leading-[0.85] tracking-tighter-custom uppercase font-black"
+              className="text-[clamp(2.5rem,8vw,6.5rem)] leading-[1.05] tracking-tighter-custom uppercase font-black"
             >
               <span className="block">Igniting the</span>
               <span className="block">spark of AI</span>
@@ -471,7 +471,7 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="lg:max-w-xs lg:pb-4"
+              className="lg:max-w-xs lg:translate-y-6"
             >
               <div className="flex items-center gap-8 mb-6">
                 <div className="relative w-[120px] h-[120px]">
@@ -595,7 +595,7 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-[clamp(2.5rem,8vw,4rem)] font-black leading-[1.28] mb-6 mx-auto max-w-[800px] bg-clip-text text-transparent bg-[linear-gradient(144.5deg,#FFFFFF_28%,rgba(0,0,0,0)_115%)] tracking-tight-custom"
+              className="text-[clamp(2.5rem,8vw,4rem)] font-black leading-[1.28] mb-6 mx-auto max-w-[800px] bg-clip-text text-transparent bg-[linear-gradient(144.5deg,#FFFFFF_28%,rgba(0,0,0,0)_115%)] tracking-tight-custom py-2"
             >
               AI Agent: Agents of Change
             </motion.h2>
@@ -899,8 +899,8 @@ export default function App() {
         <section id="scoring" className="relative py-32 overflow-hidden bg-[#010101]">
           {/* Video Background */}
           <div className="absolute bottom-0 left-0 w-full z-10 -mt-[150px] pointer-events-none opacity-50">
-            <HlsVideo 
-              src="https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8" 
+            <HlsVideo
+              src="https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8"
               fallback="/_videos/v1/f0c78f536d5f21a047fb7792723a36f9d647daa1"
             />
             {/* Gradient Overlay */}
@@ -1065,7 +1065,7 @@ export default function App() {
 
         {/* Prize Section (Vòng Idea) */}
         <section id="prizes" className="py-16 px-6 bg-black">
-          <div className="relative max-w-[1400px] mx-auto min-h-[500px] rounded-[4rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
+          <div className="relative max-w-[1400px] mx-auto rounded-[4rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
             {/* Background Video */}
             <div className="absolute inset-0 z-0 overflow-hidden">
               <video
@@ -1073,29 +1073,26 @@ export default function App() {
                 loop
                 muted
                 playsInline
-                className="w-[120%] h-[135%] absolute top-0 left-1/2 -translate-x-1/2 object-cover object-top opacity-60"
+                className="w-[120%] h-[110%] absolute -top-[15%] left-1/2 -translate-x-1/2 object-cover object-center opacity-60"
               >
                 <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260215_121759_424f8e9c-d8bd-4974-9567-52709dfb6842.mp4" type="video/mp4" />
               </video>
             </div>
 
-            {/* Blurred Background Element */}
-            <div
-              className="absolute top-[150px] left-1/2 -translate-x-1/2 w-[801px] h-[384px] bg-black rounded-full blur-[77.5px] z-1 opacity-40"
-            />
+            {/* Blurred Background Element Removed to fix horizontal cut glitch */}
 
             {/* Bottom Blur Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black via-black/20 to-transparent z-10 pointer-events-none backdrop-blur-[12px]" />
+            {/* <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black via-black/20 to-transparent z-10 pointer-events-none backdrop-blur-[12px]" /> */}
 
             {/* Content Container */}
-            <div className="relative z-20 w-full h-full pt-48 pb-8 px-6 flex flex-col items-center text-center scale-[0.75] origin-top">
+            <div className="relative z-20 w-full pt-20 pb-0 px-6 flex flex-col items-center text-center scale-[0.75] origin-top -mb-[120px] md:-mb-[180px]">
               {/* Heading Block */}
               <div className="flex flex-col gap-[10px] mb-12 max-w-[871px]">
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="text-[clamp(2.5rem,5vw,76px)] font-sans font-black tracking-[-2px] leading-[1.15] uppercase bg-clip-text text-transparent bg-gradient-to-r from-primary-gradient-from via-primary-gradient-via to-primary-gradient-to text-glow-primary"
+                  className="text-[clamp(2.5rem,5vw,76px)] font-sans font-black tracking-[-2px] leading-[1.3] py-2 uppercase bg-clip-text text-transparent bg-gradient-to-r from-primary-gradient-from via-primary-gradient-via to-primary-gradient-to text-glow-primary"
                 >
                   CƠ CẤU GIẢI THƯỞNG
                 </motion.h2>
@@ -1104,7 +1101,7 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 }}
-                  className="text-[clamp(2.5rem,5vw,76px)] font-display italic font-black tracking-[-2px] leading-[1.15] bg-clip-text text-transparent bg-gradient-to-r from-primary-gradient-from via-primary-gradient-via to-primary-gradient-to text-glow-primary"
+                  className="text-[clamp(2.5rem,5vw,76px)] font-display italic font-black tracking-[-2px] leading-[1.3] py-2 bg-clip-text text-transparent bg-gradient-to-r from-primary-gradient-from via-primary-gradient-via to-primary-gradient-to text-glow-primary"
                 >
                   (VÒNG IDEA)
                 </motion.h2>
@@ -1198,7 +1195,7 @@ export default function App() {
         <section id="contact" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#002633]">
           {/* Section Transition Blur Gradient */}
           <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
-          
+
           {/* Video Background */}
           <div className="absolute inset-0 z-0">
             <video
@@ -1221,7 +1218,7 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-5xl sm:text-7xl md:text-8xl leading-[0.95] tracking-[-2.46px] font-display font-black uppercase mb-8"
+              className="text-5xl sm:text-7xl md:text-8xl leading-[1.1] pb-2 tracking-[-2.46px] font-display font-black uppercase mb-8 relative z-30"
             >
               Sẵn sàng trở thành <br />
               <span className="text-muted-foreground text-glow-blue">“Agents of Change”</span> <br />
@@ -1235,7 +1232,7 @@ export default function App() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-muted-foreground text-base sm:text-lg max-w-2xl leading-relaxed mb-12"
             >
-              Đừng bỏ lỡ cơ hội tham gia sân chơi AI Agent lớn nhất năm của ITSC. 
+              Đừng bỏ lỡ cơ hội tham gia sân chơi AI Agent lớn nhất năm của ITSC.
               Chúng tôi đang tìm kiếm những bộ óc sáng tạo, những người dám nghĩ dám làm để cùng nhau định hình tương lai.
             </motion.p>
 
