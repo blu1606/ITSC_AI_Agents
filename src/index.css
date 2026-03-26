@@ -23,13 +23,25 @@
   --tracking-wide-custom: 0.05em;
 
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
   }
 
   @keyframes fade-rise {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
@@ -40,16 +52,24 @@
     --muted-foreground: 240 4% 66%;
     --radius: 1rem;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
 }
 
 @layer components {
-  .animate-fade-rise { animation: fade-rise 0.8s ease-out both; }
-  .animate-fade-rise-delay { animation: fade-rise 0.8s ease-out 0.2s both; }
-  .animate-fade-rise-delay-2 { animation: fade-rise 0.8s ease-out 0.4s both; }
+  .animate-fade-rise {
+    animation: fade-rise 0.8s ease-out both;
+  }
+
+  .animate-fade-rise-delay {
+    animation: fade-rise 0.8s ease-out 0.2s both;
+  }
+
+  .animate-fade-rise-delay-2 {
+    animation: fade-rise 0.8s ease-out 0.4s both;
+  }
 
   .liquid-glass {
     background: rgba(255, 255, 255, 0.01);
@@ -134,7 +154,7 @@
 body {
   font-family: var(--font-sans);
   background-color: #010101;
-  background-image: 
+  background-image:
     radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
     radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
   color: white;
