@@ -373,7 +373,7 @@ export default function App() {
         </div>
 
         <a href="#" className="absolute left-1/2 -translate-x-1/2 pointer-events-auto flex items-center gap-2 md:gap-4">
-          <img src="/ITSC_white.png" alt="ITSC X DEVER" className="h-[40px] md:h-[60px] lg:h-[75px] object-contain" />
+          <img src="/ITSC_white.png" alt="ITSC x DEVER" className="h-[40px] md:h-[60px] lg:h-[75px] object-contain" />
           <span className="text-white/40 text-sm md:text-xl font-light">X</span>
           <img src="/dever.png" alt="Dever" className="h-[32px] md:h-[48px] lg:h-[60px] object-contain" />
         </a>
@@ -416,7 +416,7 @@ export default function App() {
                 <span className="text-[10px] font-bold tracking-[0.25em] uppercase">Close</span>
               </button>
               <span className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-4">
-                <img src="/ITSC_white.png" alt="ITSC X DEVER" className="h-[40px] md:h-[60px] object-contain" />
+                <img src="/ITSC_white.png" alt="ITSC x DEVER" className="h-[40px] md:h-[60px] object-contain" />
                 <span className="text-background/40 text-sm md:text-xl font-light">X</span>
                 <img src="/dever.png" alt="Dever" className="h-[32px] md:h-[48px] object-contain" />
               </span>
@@ -449,7 +449,7 @@ export default function App() {
 
             <div className="px-6 md:px-10 py-10 flex justify-between items-center border-t border-background/10">
               <span className="text-background/40 text-[10px] tracking-[0.25em] uppercase font-medium">
-                ITSC X DEVER: AGENTIC SPARK
+                ITSC x DEVER: AGENTIC SPARK
               </span>
               <span className="text-background/40 text-[10px] tracking-[0.25em] uppercase font-medium">
                 © 2026
@@ -484,7 +484,7 @@ export default function App() {
           >
             <ArrowRight className="w-4 h-4 text-foreground" />
             <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-foreground">
-              ITSC X DEVER: AGENTIC SPARK — 2026
+              ITSC x DEVER: AGENTIC SPARK — 2026
             </span>
           </motion.div>
 
@@ -540,7 +540,7 @@ export default function App() {
               </div>
               <p className="text-foreground/70 text-sm leading-relaxed max-w-sm tracking-wide-custom">
                 Rèn tư duy sản phẩm, thực chiến AI Agent, làm bàn đạp cho những cuộc thi lớn hơn.
-                Sẵn sàng trở thành "Agents of Change" cùng ITSC X DEVER?
+                Sẵn sàng trở thành "Agents of Change" cùng ITSC x DEVER?
               </p>
             </motion.div>
           </div>
@@ -567,7 +567,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <SectionHeading
               title="GIỚI THIỆU CUỘC THI"
-              subtitle="ITSC X DEVER: AGENTIC SPARK là sân chơi hackathon nội giữa hai CLB, nơi các thành viên cùng nhau khám phá và chinh phục kỷ nguyên AI Agent."
+              subtitle="ITSC x DEVER: AGENTIC SPARK là sân chơi hackathon nội giữa hai CLB, nơi các thành viên cùng nhau khám phá và chinh phục kỷ nguyên AI Agent."
             />
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -834,7 +834,7 @@ export default function App() {
                     </div>
                     <div className="flex-1">
                       <h4 className="text-xs font-bold uppercase tracking-widest mb-1 text-white">Đối tượng</h4>
-                      <p className="text-[10px] text-white/50">thành viên ITSC X DEVER</p>
+                      <p className="text-[10px] text-white/50">thành viên ITSC x DEVER</p>
                     </div>
                     <a
                       href="https://forms.gle/Nrr3GDFQ32cYoKtV8"
@@ -1145,7 +1145,7 @@ export default function App() {
                   transition={{ delay: 0.2 }}
                   className="text-[#f6f7f9]/90 text-lg max-w-[613px] mx-auto leading-[26px] mt-4"
                 >
-                  Phần thưởng xứng đáng cho những ý tưởng AI Agent đột phá và có tính thực tiễn cao nhất tại ITSC X DEVER 2026.
+                  Phần thưởng xứng đáng cho những ý tưởng AI Agent đột phá và có tính thực tiễn cao nhất tại ITSC x DEVER 2026.
                 </motion.p>
               </div>
 
@@ -1255,7 +1255,7 @@ export default function App() {
             >
               Sẵn sàng trở thành <br />
               <span className="text-muted-foreground text-glow-blue">“Agents of Change”</span> <br />
-              cùng ITSC X DEVER?
+              cùng ITSC x DEVER?
             </motion.h2>
 
             <motion.p
@@ -1265,7 +1265,7 @@ export default function App() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-muted-foreground text-base sm:text-lg max-w-2xl leading-relaxed mb-12"
             >
-              Đừng bỏ lỡ cơ hội tham gia sân chơi AI Agent lớn nhất năm của ITSC X DEVER.
+              Đừng bỏ lỡ cơ hội tham gia sân chơi AI Agent lớn nhất năm của ITSC x DEVER.
               Chúng tôi đang tìm kiếm những bộ óc sáng tạo, những người dám nghĩ dám làm để cùng nhau định hình tương lai.
             </motion.p>
 
@@ -1312,13 +1312,13 @@ export default function App() {
       <footer className="py-12 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-sm font-bold tracking-tighter">
-            ITSC X DEVER: AGENTIC SPARK
+            ITSC x DEVER: AGENTIC SPARK
           </div>
           <div className="text-xs text-foreground/40 font-medium tracking-[0.2em] uppercase text-center">
             Rèn tư duy, thực chiến AI Agent.
           </div>
           <div className="text-xs text-foreground/40">
-            © 2026 ITSC X DEVER Club. All rights reserved.
+            © 2026 ITSC x DEVER Club. All rights reserved.
           </div>
         </div>
       </footer>
