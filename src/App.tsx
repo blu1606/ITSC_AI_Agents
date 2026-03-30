@@ -114,9 +114,9 @@ const TIMELINE = [
   {
     phase: "Giai đoạn 1",
     title: "Mở đơn đăng ký",
-    date: "05/04",
+    date: "30/03",
     items: [
-      "05/04: Chính thức mở form đăng ký tham gia cuộc thi.",
+      "30/03: Chính thức mở form đăng ký tham gia cuộc thi.",
       "Các đội thi bắt đầu tìm kiếm thành viên và lên ý tưởng sơ bộ."
     ],
     icon: <Users className="w-5 h-5" />
@@ -298,6 +298,13 @@ const PRIZES = [
   { title: "Giải Nhất", value: "500.000 VNĐ", desc: "Kèm giấy chứng nhận & quà tặng từ nhà tài trợ.", color: "accent-blue" },
   { title: "Giải Nhì", value: "300.000 VNĐ", desc: "Kèm giấy chứng nhận & quà tặng.", color: "accent-purple" },
   { title: "Giải Ba", value: "200.000 VNĐ", desc: "Kèm giấy chứng nhận.", color: "accent-cyan" },
+];
+
+const SUB_PRIZES = [
+  { title: "Giải Sáng Tạo", value: "100.000 VNĐ", desc: "Ý tưởng độc đáo, đột phá.", icon: <Sparkles className="w-5 h-5 text-accent-blue" /> },
+  { title: "Giải Kỹ Thuật", value: "100.000 VNĐ", desc: "Kiến trúc bền vững, logic.", icon: <Cpu className="w-5 h-5 text-accent-purple" /> },
+  { title: "Giải Thực Tiễn", value: "100.000 VNĐ", desc: "Ứng dụng cao, thực tế.", icon: <Target className="w-5 h-5 text-accent-cyan" /> },
+  { title: "Giải Triển Vọng", value: "100.000 VNĐ", desc: "Tiềm năng phát triển lớn.", icon: <Zap className="w-5 h-5 text-accent-blue" /> },
 ];
 
 const FAQS = [
@@ -1017,13 +1024,15 @@ export default function App() {
 
                 <div className="flex flex-wrap gap-4">
                   <a
-                    href="#register"
+                    href="https://forms.gle/Nrr3GDFQ32cYoKtV8"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="px-8 py-4 bg-[#f97316] text-white rounded-full font-medium hover:bg-[#ea580c] transition-all hover:scale-105 shadow-lg shadow-orange-500/20"
                   >
                     Tham gia ngay
                   </a>
                   <a
-                    href="https://m.me/itsc.club"
+                    href="https://discord.gg/J9TszhSnt"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-8 py-4 border border-[#e5e7eb] text-[#1a1a1a] rounded-full font-medium hover:bg-white transition-all hover:scale-105"
@@ -1219,6 +1228,29 @@ export default function App() {
 
                   </div>
                 </div>
+
+                {/* Sub-Awards Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-[1163px] mx-auto mt-16 pb-24">
+                  {SUB_PRIZES.map((prize, i) => (
+                    <motion.div
+                      key={prize.title}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.6 + i * 0.1 }}
+                      className="liquid-glass glass-hover p-8 rounded-[32px] flex flex-col items-center text-center group cursor-default border border-white/5 bg-white/[0.02]"
+                    >
+                      <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 border border-white/10 group-hover:bg-white/10 transition-all shadow-xl">
+                        {prize.icon}
+                      </div>
+                      <h3 className="text-xl font-display italic text-white/90 group-hover:text-white transition-colors mb-1">
+                        {prize.title}
+                      </h3>
+                      <div className="text-2xl font-bold text-white/80 mt-1">{prize.value}</div>
+                      <p className="text-sm text-white/40 mt-3 leading-relaxed">{prize.desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -1290,14 +1322,24 @@ export default function App() {
                   <Mail className="w-5 h-5" />
                   <span className="text-sm">itsc.fptu@gmail.com</span>
                 </div>
-                <div className="flex items-center gap-3 text-foreground/60 hover:text-foreground transition-colors">
+                <a
+                  href="https://www.facebook.com/itsc.fptu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-foreground/60 hover:text-foreground transition-colors"
+                >
                   <Facebook className="w-5 h-5" />
                   <span className="text-sm">facebook.com/itsc.fptu</span>
-                </div>
-                <div className="flex items-center gap-3 text-foreground/60 hover:text-foreground transition-colors">
+                </a>
+                <a
+                  href="https://discord.gg/J9TszhSnt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-foreground/60 hover:text-foreground transition-colors"
+                >
                   <MessageSquare className="w-5 h-5" />
                   <span className="text-sm">Discord Community</span>
-                </div>
+                </a>
               </div>
             </motion.div>
           </div>
